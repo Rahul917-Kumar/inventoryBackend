@@ -1,9 +1,11 @@
 const express = require("express")
 const router = express.Router()
 const itemsController = require("../controllers/itemsController")
+const authenticationMiddleware = require("../middleware/authentication")
 
 router.get("/", itemsController.getItems)
-router.post("/", itemsController.addItems)
-router.patch("/", itemsController.updateItems)
+router.post("/", authenticationMiddleware, itemsController.addItems)
+router.patch("/", authenticationMiddleware, itemsController.updateItem)
+router.patch("/bulkUpdate", itemsController.updateInBulk)
 
 module.exports = router

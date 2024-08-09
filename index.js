@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 // app.use("/shopper", shopperRouter)
 // app.use("/admin", adminRouter)
-// app.use("/user", userRouter)
+app.use("/user", userRouter)
 app.use("/items", itemRouter)
 
 
