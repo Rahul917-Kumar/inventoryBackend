@@ -2,8 +2,6 @@ const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser") 
-const shopperRouter = require("./routers/shopperRouter")
-const adminRouter = require("./routers/adminRouter")
 const userRouter = require("./routers/userRouter")
 const itemRouter = require("./routers/itemsRouter")
 const cors = require('cors')
@@ -12,8 +10,6 @@ app.use(express.json())
 app.use(bodyParser.json())
 app.use(cors());
 
-// app.use("/shopper", shopperRouter)
-// app.use("/admin", adminRouter)
 app.use("/user", userRouter)
 app.use("/items", itemRouter)
 
