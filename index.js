@@ -15,7 +15,7 @@ app.use(cors());
 app.use("/user", userRouter)
 app.use("/items", itemRouter)
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => res.send("Hi From Rahul"));
 
 mongoose.connect("mongodb+srv://rahul:rahul123@cluster0.wot0u.mongodb.net/testingDB?retryWrites=true&w=majority&appName=Cluster0").then(()=>{
     console.log("database successfully connected")
