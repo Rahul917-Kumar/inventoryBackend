@@ -1,4 +1,6 @@
 const express = require("express")
+const dotenv = require('dotenv');
+
 const app = express()
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser") 
@@ -21,6 +23,6 @@ mongoose.connect("mongodb+srv://rahul:rahul123@cluster0.wot0u.mongodb.net/testin
     console.log("database not connected")
 })
 
-app.listen(3000, ()=>{
-    console.log("listening to port 8080")
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log(`listening to port ${process.env.PORT}`)
 })
