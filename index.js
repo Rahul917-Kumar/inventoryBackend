@@ -23,6 +23,6 @@ mongoose.connect("mongodb+srv://rahul:rahul123@cluster0.wot0u.mongodb.net/testin
     console.log("database not connected")
 })
 
-app.listen(process.env.PORT || 3000, ()=>{
+app.listen(process.env.PORT || 8080, ()=>{
     console.log(`listening to port ${process.env.PORT}`)
 })
