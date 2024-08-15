@@ -12,6 +12,7 @@
 ### CUSTOMER TASK
 
 - select quantity of items which customer going to pruchase and can select multiple items
-![update item quantity by customer](https://github.com/user-attachments/assets/cdca42bc-da45-4f17-a534-5ad7af99aebb)
+![update item quantity by customer](https://github.com/user-attachments/assets/45fa656e-a4cd-4f25-94f1-5099fe4db4a3)
+ 
 
 
