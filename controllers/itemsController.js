@@ -8,19 +8,36 @@ exports.getItems = async(req, res)=>{
 
 exports.addItems = async(req, res)=>{
     const items = req.body
+    // try {
+    //     for(let i =0; i<items.length; i++){
+    //         const {name, price, available_quantity, display_image_url} = items[i]
+    //         const itemData = { name, price, available_quantity }
+    //         if(display_image_url){
+    //             itemData.display_image_url = display_image_url
+    //         }
+    //         const item = new Item(itemData)
+    //         await item.save()
+    //     }
+    //     res.status(200).send({message:"Items Added Successfull"})
+    // } catch (error) {
+    //     res.status(400).send({message:"something went wrong"})
+    // }
+    const itemsToInsert = items.map(item => {
+        const { name, price, quantity, image_url } = item;
+        return {
+            name,
+            price,
+            available_quantity:quantity,
+            display_image_url: image_url || "https://res.cloudinary.com/de7fldt0n/image/upload/v1723560741/vtmqij3e0jsbp8ofacpt.png"
+        };
+    });
+
     try {
-        for(let i =0; i<items.length; i++){
-            const {name, price, available_quantity, display_image_url} = items[i]
-            const itemData = { name, price, available_quantity }
-            if(display_image_url){
-                itemData.display_image_url = display_image_url
-            }
-            const item = new Item(itemData)
-            await item.save()
-        }
-        res.status(200).send({message:"Items Added Successfull"})
+        await Item.insertMany(itemsToInsert);
+        res.status(200).send({ message: "Items Added Successfully" });
     } catch (error) {
-        res.status(400).send({message:"something went wrong"})
+        console.error("Error adding items:", error);
+        res.status(400).send({ message: "Something went wrong" });
     }
 }
 
