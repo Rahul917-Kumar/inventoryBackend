@@ -58,9 +58,10 @@ exports.updateInBulk = async(req, res)=>{
     try {
         const items = req.body
         for(let i = 0; i<items.length; i++){
+            const existingItem = await Item.find({"_id":items[i]._id})
             const result = await Item.updateOne(
                 {"_id":items[i]._id},
-                {$set:{"available_quantity":items[i].available_quantity}}
+                {$set:{"available_quantity": existingItem.available_quantity- items[i].quantity}}
             )
         }
         res.status(200).send({message:"successfull update"})
